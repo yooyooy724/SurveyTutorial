@@ -17,7 +17,9 @@ const choice_entity_1 = require("./choice.entity");
 const response_entity_1 = require("./response.entity");
 let Question = class Question {
     id;
-    text;
+    sentence;
+    sortOrder;
+    surveyId;
     survey;
     choices;
     responses;
@@ -32,10 +34,21 @@ __decorate([
     (0, graphql_1.Field)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Question.prototype, "text", void 0);
+], Question.prototype, "sentence", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Question.prototype, "sortOrder", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Question.prototype, "surveyId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => survey_entity_1.Survey),
     (0, typeorm_1.ManyToOne)(() => survey_entity_1.Survey, (survey) => survey.questions),
+    (0, typeorm_1.JoinColumn)({ name: 'surveyId' }),
     __metadata("design:type", survey_entity_1.Survey)
 ], Question.prototype, "survey", void 0);
 __decorate([

@@ -38,7 +38,7 @@ __decorate([
     __metadata("design:type", Date)
 ], ResponseSession.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => survey_entity_1.Survey),
+    (0, graphql_1.Field)(() => survey_entity_1.Survey, { nullable: true }),
     (0, typeorm_1.ManyToOne)(() => survey_entity_1.Survey, (survey) => survey.responseSessions),
     (0, typeorm_1.JoinColumn)({ name: 'surveyId' }),
     __metadata("design:type", survey_entity_1.Survey)

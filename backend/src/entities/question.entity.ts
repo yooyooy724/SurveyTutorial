@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { Survey } from './survey.entity';
 import { Choice } from './choice.entity';
@@ -13,10 +13,19 @@ export class Question {
 
   @Field()
   @Column()
-  text: string;
+  sentence: string;
+
+  @Field()
+  @Column()
+  sortOrder: number;
+
+  @Field()
+  @Column()
+  surveyId: string;
 
   @Field(() => Survey)
   @ManyToOne(() => Survey, (survey) => survey.questions)
+  @JoinColumn({ name: 'surveyId' })
   survey: Survey;
 
   @Field(() => [Choice], { nullable: true })

@@ -23,10 +23,10 @@ export class Response {
   @Column()
   choiceId: string;
 
-  @Field(() => ResponseSession)
+  @Field(() => ResponseSession, { nullable: true })
   @ManyToOne(() => ResponseSession, (session) => session.responses)
   @JoinColumn({ name: 'responseSessionId' })
-  responseSession: ResponseSession;
+  responseSession?: ResponseSession;
 
   @Field(() => Question)
   @ManyToOne(() => Question, (question) => question.responses)

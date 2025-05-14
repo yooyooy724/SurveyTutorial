@@ -18,10 +18,10 @@ export class ResponseSession {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
-  @Field(() => Survey)
+  @Field(() => Survey, { nullable: true })
   @ManyToOne(() => Survey, (survey) => survey.responseSessions)
   @JoinColumn({ name: 'surveyId' })
-  survey: Survey;
+  survey?: Survey;
 
   @Field(() => [Response], { nullable: true })
   @OneToMany(() => Response, (response) => response.responseSession)

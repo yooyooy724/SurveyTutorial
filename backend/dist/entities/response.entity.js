@@ -46,7 +46,7 @@ __decorate([
     __metadata("design:type", String)
 ], Response.prototype, "choiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => response_session_entity_1.ResponseSession),
+    (0, graphql_1.Field)(() => response_session_entity_1.ResponseSession, { nullable: true }),
     (0, typeorm_1.ManyToOne)(() => response_session_entity_1.ResponseSession, (session) => session.responses),
     (0, typeorm_1.JoinColumn)({ name: 'responseSessionId' }),
     __metadata("design:type", response_session_entity_1.ResponseSession)

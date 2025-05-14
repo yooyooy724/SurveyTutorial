@@ -6,7 +6,7 @@ export declare class Response {
     responseSessionId: string;
     questionId: string;
     choiceId: string;
-    responseSession: ResponseSession;
+    responseSession?: ResponseSession;
     question: Question;
     choice: Choice;
 }

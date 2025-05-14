@@ -4,6 +4,6 @@ export declare class ResponseSession {
     id: string;
     surveyId: string;
     createdAt: Date;
-    survey: Survey;
+    survey?: Survey;
     responses?: Response[];
 }
