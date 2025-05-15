@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args, ID } from '@nestjs/graphql';
 import { SurveyType } from '../graphql/types/survey.type';
-import { SurveyService } from '../services/survey.service';
+import { SurveyService } from './survey.service';
 import { CreateSurveyInput } from '../graphql/inputs/create-survey.input';
 
 @Resolver(() => SurveyType)
@@ -14,20 +14,7 @@ export class SurveyResolver {
 
   @Query(() => SurveyType, { nullable: true })
   async survey(@Args('id', { type: () => ID }) id: string): Promise<SurveyType | null> {
-    const survey = await this.surveyService.findOneById(id);
-    if (!survey) {
-      return null;
-    }
-    return survey;
-  }
-
-  @Query(() => SurveyType, { nullable: true })
-  async surveyByUrl(@Args('url') url: string): Promise<SurveyType | null> {
-    const survey = await this.surveyService.findOneByUrl(url);
-    if (!survey) {
-      return null;
-    }
-    return survey;
+    return this.surveyService.findOneById(id);
   }
 
   @Mutation(() => SurveyType)
